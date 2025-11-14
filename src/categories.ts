@@ -1,1 +1,1 @@
-export type BookCategory = "Novel" | "History" | "Science" | "Poetry";
+export type BookCategory = "novel" | "history" | "science" | "poetry";
