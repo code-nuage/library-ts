@@ -34,3 +34,7 @@ export const loan3: Loan = {
 export const getActiveLoans = (loans: Loan[]): Loan[] => {
     return loans.filter(loan => loan.status === "ongoing");
 };
+
+export const getLoansByStudent = (loans: Loan[], student: Student): Loan[] => {
+    return loans.filter(loan => loan.student === student);
+};
