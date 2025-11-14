@@ -9,11 +9,21 @@ const rl = createInterface({
     output: process.stdout
 });
 
+const author1: Author = { id: 1, name: "Victor Hugo", birthYear: 1802 };
+const book1: Book = {
+    id: 1,
+    title: "Les Misérables",
+    author: author1,
+    available: true,
+    categories: ["novel", "history"]
+};
+
 export default class Menu {
     library = new Library();
-    authors: Author[] = [];
+    authors: Author[] = [author1];
 
     constructor() {
+        this.library.addBook(book1);
         console.clear();
         this.showMainMenu();
     }
@@ -21,7 +31,7 @@ export default class Menu {
     showMainMenu(): void {
         console.log("---- Main Menu ----");
         console.log("1. Livres");
-        console.log("2. Utilisateurs");
+        console.log("2. Auteurs");
         console.log("3. Quitter");
 
         this.getUserInput("Veuillez choisir une option : ", (input: string) => {
@@ -69,9 +79,9 @@ export default class Menu {
     }
 
     showUsersMenu(): void {
-        console.log("---- Menu des Utilisateurs ----");
-        console.log("1. Lister les utilisateurs");
-        console.log("2. Ajouter un utilisateur");
+        console.log("---- Menu des Auteurs ----");
+        console.log("1. Lister les auteurs");
+        console.log("2. Ajouter un auteur");
         console.log("3. Retour au menu principal");
 
         this.getUserInput("Veuillez choisir une option : ", (input: string) => {
@@ -87,7 +97,7 @@ export default class Menu {
 
                 if (availableBooks.length !== 0) {
                     availableBooks.forEach(book => {
-                        console.log(`- "${book.title}" by ${book?.author?.name}`);
+                        console.log(`- "${book.title}" by ${book?.author?.name}, Categories: ${book.categories.join(", ")}`);
                     });
                 } else {
                     console.log("Aucun livre disponible.\n");
@@ -118,11 +128,20 @@ export default class Menu {
                         console.log(`${user.id} - "${user.name}"`);
                     });
                 } else {
-                    console.log("Aucun author disponible.\n");
+                    console.log("Aucun auteur disponible.\n");
                 }
                 this.showUsersMenu();
                 break;
             case "2":
+                this.getUserInput("Entrée le nom de l'auteur : ", (input: string) => {
+                    const newAuthor: Author = {
+                        id: this.authors.length + 1,
+                        name: input
+                    };
+                    this.authors.push(newAuthor);
+                    console.log(`Auteur "${newAuthor.name}" ajouté avec succès!\n`);
+                    this.showUsersMenu();
+                });
                 break;
             case "3":
                 this.showMainMenu();
@@ -149,9 +168,9 @@ export default class Menu {
         });
     }
 
-    handleAuthorBook(id_author: string, book: Book): void {
-
-        const author = this.authors.find(a => a.name.toLowerCase() === id_author.toLowerCase());
+    handleAuthorBook(name_author: string, book: Book): void {
+        console.log(this.authors);
+        const author = this.authors.find(a => a.name.toLowerCase() === name_author.toLowerCase());
         if (!author) {
             console.log("Auteur non trouvé. Livre non ajouté.\n Créez d'abord l'auteur.");
             this.showBooksMenu();
