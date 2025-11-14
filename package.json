@@ -1,4 +1,25 @@
 {
+  "name": "library-ts",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/code-nuage/library-ts#readme",
+  "bugs": {
+    "url": "https://github.com/code-nuage/library-ts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code-nuage/library-ts.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "run": "node dist/main.js",
+    "start": "npm run build && npm run run",
+    "clean": "rm -rf dist"
+  },
   "dependencies": {
     "ts-node": "^10.9.2"
   }
