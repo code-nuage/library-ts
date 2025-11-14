@@ -1,10 +1,12 @@
+import { Book } from "./book";
+
 class Library {
-    private books: Book[];
+    private books: Book[] = [];
 
     constructor() {}
 
     addBook(b: Book): Library {
-        this.books.push(this.books);
+        this.books.push(b);
         return this;
     }
 
@@ -12,7 +14,7 @@ class Library {
         return this.books.filter(b => b.available === true);
     }
 
-    findBookById(id: number): Book[] | undefined {
+    findBookById(id: number): Book | undefined {
         return this.books.find(b => b.id === id);
     }
 }
