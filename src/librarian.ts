@@ -1,7 +1,9 @@
-import { User } from './user';
+import User from './user';
 
-export class Librarian extends User {
+class Librarian extends User {
   manage(): void {
-   
+
   }
 }
+
+export default Librarian;

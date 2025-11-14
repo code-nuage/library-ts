@@ -1,4 +1,4 @@
-  export class User {
+class User {
   constructor(public firstname: string, public lastname: string, private _age: number) {
   }
 
@@ -16,4 +16,5 @@
     }
   }
 }
+export default User
 
