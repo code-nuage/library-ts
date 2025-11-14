@@ -1,0 +1,1 @@
+export type BookCategory = "novel" | "history" | "science" | "poetry";
