@@ -1,5 +1,5 @@
 import { Author } from "./author";
-import { BookCategory } from "./categories";
+import { BookCategory } from "./types";
 
 export interface Book {
     id: number;

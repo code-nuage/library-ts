@@ -1,7 +1,6 @@
 import { Book } from "./book";
 import Student from "./student";
-
-type LoanStatus ="ongoing"|"returned";
+import { LoanStatus } from "./types";
 
 export interface Loan {
     book: Book;
