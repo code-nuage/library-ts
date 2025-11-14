@@ -50,9 +50,9 @@ const book3: Book = {
   categories: ["novel"]
 };
 
-console.log(`Book 1: "${book1.title}" by ${book1.author.name}`);
-console.log(`Book 2: "${book2.title}" by ${book2.author.name}`);
-console.log(`Book 3: "${book3.title}" by ${book3.author.name}\n`);
+console.log(`Book 1: "${book1.title}" by ${book1?.author?.name}`);
+console.log(`Book 2: "${book2.title}" by ${book2?.author?.name}`);
+console.log(`Book 3: "${book3.title}" by ${book3?.author?.name}\n`);
 
 // Test category validation
 console.log("--- Testing Category Validation ---");
@@ -70,7 +70,7 @@ console.log("Books added to library!");
 console.log(`Available books: ${library.listAvailable().length}`);
 console.log("Available books:");
 library.listAvailable().forEach(book => {
-  console.log(`  - "${book.title}" by ${book.author.name}`);
+  console.log(`  - "${book.title}" by ${book?.author?.name}`);
 });
 console.log();
 
